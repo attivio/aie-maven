@@ -2,8 +2,9 @@
 AIE Maven Repository
 ====================
 
-This project provides maven POMs and scripts that installs artifacts distributed with the AIE installation into your (private) maven repository.
-We also provide sample mavenized projects.
+This project provides maven POMs and scripts that install artifacts from your AIE installation into your (private) maven repository,
+thereby allowing you to use maven for build automation of your AIE-related projects.
+We also provide sample mavenized AIE projects.
 
 Installation to the local repository
 ------------------------------------
@@ -69,7 +70,7 @@ For integration testing, we typically start AIE within JUnit tests; therefore, w
 
 ```xml
 <properties>
-	<aieVersion>4.2.0</aieVersion>
+	<aieVersion>4.3.0</aieVersion>
 	<attivio.home>${env.ATTIVIO_HOME}</attivio.home>
 </properties>
 <dependencies>
