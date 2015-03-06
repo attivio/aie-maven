@@ -14,19 +14,35 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.attivio.platform.core</groupId>
+			<artifactId>api</artifactId>
+			<version>${aieVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.attivio.platform.platform.base</groupId>
+			<artifactId>transformer</artifactId>
+			<version>${aieVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.attivio.platform.platform.base</groupId>
+			<artifactId>connector</artifactId>
+			<version>${aieVersion}</version>
+		</dependency>
 		<!-- explicitly include correct version of xml-apis -->
 		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
 			<version>1.4.01</version>
-			<scope>provided</scope>
-		</dependency>         
+			<scope>test</scope>
+		</dependency>
 		<!-- exclude transitive dependencies that conflict with AIE -->
 		<dependency>
 			<groupId>com.attivio.platform</groupId>
 			<artifactId>app</artifactId>
 			<version>${aieVersion}</version>
-			<scope>provided</scope>
+			<scope>test</scope>
 			<exclusions>
 				<exclusion>
 					<artifactId>slf4j-api</artifactId>

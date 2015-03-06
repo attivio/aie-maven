@@ -10,6 +10,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<aieVersion>4.3.0</aieVersion>
+		<attivio.home>${env.ATTIVIO_HOME}</attivio.home>
 		<!-- the environment used when running integration tests -->
 		<attivio.environment>test</attivio.environment>
 	</properties>
@@ -133,9 +134,10 @@
 					<reuseForks>false</reuseForks>
 					<useSystemClassLoader>true</useSystemClassLoader>
 					<useManifestOnlyJar>false</useManifestOnlyJar>
-					<systemPropertyVariables>
+					<systemProperties>
+						<attivio.home>${attivio.home}</attivio.home>
 						<attivio.environment>${attivio.environment}</attivio.environment>
-					</systemPropertyVariables>
+					</systemProperties>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -146,8 +148,8 @@
 						<id>copy-to-lib</id>
 						<phase>package</phase>
 						<configuration>
-							<echo>${project.build.directory}/${project.build.finalName}.jar</echo>
 							<tasks>
+								<echo>copy ${project.build.directory}/${project.build.finalName}.jar</echo>
 								<!-- copy the jar file to the lib directory -->
 								<copy
 									file="${project.build.directory}/${project.build.finalName}.jar"
