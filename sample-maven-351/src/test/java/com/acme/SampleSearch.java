@@ -3,14 +3,6 @@
  */
 package com.acme;
 
-import java.io.IOException;
-
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import com.attivio.TestUtils;
-import com.attivio.bus.PsbProperties;
 import com.attivio.client.SearchClient;
 import com.attivio.messages.QueryRequest;
 import com.attivio.messages.QueryResponse;
@@ -19,24 +11,16 @@ import com.attivio.model.QueryLanguages;
 import com.attivio.model.document.ResponseDocument;
 import com.attivio.model.request.FacetBucket;
 import com.attivio.model.request.FacetResponse;
+import org.junit.Assert;
+import org.junit.Test;
 
 /** Sample search code to run against the small index created by SampleIngest. */
-public class SampleSearch {
+public class SampleSearch extends BaseTest {
 
   // Change these to point to your Attivio installation
   private String host = "localhost";
   private int port = 17001;
 
-  @BeforeClass
-  public static void initializeTestEnvironment() throws AttivioException, IOException {
-    PsbProperties.setProperty("log.printStackTraces", true);
-    PsbProperties.setProperty("log.level", "INFO");
-    PsbProperties.setProperty("attivio.project", System.getProperty("user.dir"));
-    PsbProperties.setProperty("log.directory", System.getProperty("user.dir") + "/build/logs");
-    PsbProperties.setProperty("data.directory", System.getProperty("user.dir") + "/build/data");
-    TestUtils.initializeEnvironment();
-  }
-  
   /** Run a search. */
   @Test
   public void search() throws AttivioException {

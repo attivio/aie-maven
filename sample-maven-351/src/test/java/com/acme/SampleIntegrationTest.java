@@ -3,23 +3,17 @@
  */
 package com.acme;
 
-import java.io.IOException;
-
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import com.attivio.TestUtils;
 import com.attivio.app.Attivio;
 import com.attivio.app.config.Configuration;
-import com.attivio.bus.PsbProperties;
 import com.attivio.client.ContentFeeder;
 import com.attivio.client.SearchClient;
 import com.attivio.messages.QueryRequest;
 import com.attivio.messages.QueryResponse;
-import com.attivio.model.AttivioException;
 import com.attivio.model.FieldNames;
 import com.attivio.model.document.AttivioDocument;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Sample integration test.
@@ -28,18 +22,8 @@ import com.attivio.model.document.AttivioDocument;
  * as well as debugging/tracing throughout the entire system.
  *
  */
-public class SampleIntegrationTest {
+public class SampleIntegrationTest extends BaseTest {
 
-  @BeforeClass
-  public static void initializeTestEnvironment() throws AttivioException, IOException {
-    PsbProperties.setProperty("log.printStackTraces", true);
-    PsbProperties.setProperty("log.level", "INFO");
-    PsbProperties.setProperty("attivio.project", System.getProperty("user.dir"));
-    PsbProperties.setProperty("log.directory", System.getProperty("user.dir") + "/build/logs");
-    PsbProperties.setProperty("data.directory", System.getProperty("user.dir") + "/build/data");
-    TestUtils.initializeEnvironment();
-  }
-    
   @Test
   public void simpleTest() throws Exception {
     ContentFeeder feeder = null;

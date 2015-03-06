@@ -9,6 +9,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<attivio.home>${env.ATTIVIO_HOME}</attivio.home>
 		<aieVersion>3.5.1</aieVersion>
 	</properties>
 
@@ -86,9 +87,9 @@
 					<reuseForks>false</reuseForks>
 					<useSystemClassLoader>true</useSystemClassLoader>
 					<useManifestOnlyJar>false</useManifestOnlyJar>
-					<systemPropertyVariables>
-						<attivio.environment>${attivio.environment}</attivio.environment>
-					</systemPropertyVariables>
+					<systemProperties>
+						<attivio.home>${attivio.home}</attivio.home>
+					</systemProperties>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -99,8 +100,8 @@
 						<id>copy-to-lib</id>
 						<phase>package</phase>
 						<configuration>
-							<echo>${project.build.directory}/${project.build.finalName}.jar</echo>
 							<tasks>
+								<echo>${project.build.directory}/${project.build.finalName}.jar</echo>
 								<!-- copy the jar file to the lib directory -->
 								<copy
 									file="${project.build.directory}/${project.build.finalName}.jar"
@@ -166,7 +167,7 @@
 				<dependency>
 					<groupId>com.attivio.platform.core</groupId>
 					<artifactId>kernel</artifactId>
-					<version>${aieProjectVersion}</version>
+					<version>${aieVersion}</version>
 					<classifier>test</classifier>
 					<scope>test</scope>
 				</dependency>

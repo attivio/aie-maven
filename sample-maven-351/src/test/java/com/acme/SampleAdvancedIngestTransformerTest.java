@@ -3,33 +3,18 @@
  */
 package com.acme;
 
-import java.io.IOException;
-
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import com.attivio.TestUtils;
-import com.attivio.bus.PsbProperties;
 import com.attivio.model.AttivioException;
 import com.attivio.model.document.AttivioDocument;
 import com.attivio.util.ObjectUtils;
+import org.junit.Assert;
+import org.junit.Test;
 
-public class SampleAdvancedIngestTransformerTest {
+public class SampleAdvancedIngestTransformerTest extends BaseTest {
 
   private String inputField = "testin";
   private String outputField = "testout";
 
-  
-  @BeforeClass
-  public static void initializeTestEnvironment() throws AttivioException, IOException {
-    PsbProperties.setProperty("log.printStackTraces", true);
-    PsbProperties.setProperty("log.level", "INFO");
-    PsbProperties.setProperty("attivio.project", System.getProperty("user.dir"));
-    PsbProperties.setProperty("log.directory", System.getProperty("user.dir") + "/build/logs");
-    PsbProperties.setProperty("data.directory", System.getProperty("user.dir") + "/build/data");
-    TestUtils.initializeEnvironment();
-  }
+
 
   @Test
   public void testTransformer() throws AttivioException {

@@ -3,39 +3,23 @@
  */
 package com.acme;
 
-import java.io.IOException;
-import java.util.Date;
-
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import com.attivio.TestUtils;
-import com.attivio.bus.PsbProperties;
 import com.attivio.client.ContentFeeder;
 import com.attivio.messages.DocumentList;
 import com.attivio.model.AttivioException;
 import com.attivio.model.WorkflowQueue;
 import com.attivio.model.document.AttivioDocument;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.Date;
 
 /** Sample search code to run against a default empty Attivio installation. */
-public class SampleIngest {
+public class SampleIngest extends BaseTest {
 
   // Change these to point to your Attivio installation
   private String host = "localhost";
   private int port = 17001;
 
-  
-  @BeforeClass
-  public static void initializeTestEnvironment() throws AttivioException, IOException {
-    PsbProperties.setProperty("log.printStackTraces", true);
-    PsbProperties.setProperty("log.level", "INFO");
-    PsbProperties.setProperty("attivio.project", System.getProperty("user.dir"));
-    PsbProperties.setProperty("log.directory", System.getProperty("user.dir") + "/build/logs");
-    PsbProperties.setProperty("data.directory", System.getProperty("user.dir") + "/build/data");
-    TestUtils.initializeEnvironment();
-  }
- 
   /** Test some basic ingest logic. */
   @Test
   public void ingest() throws AttivioException {
