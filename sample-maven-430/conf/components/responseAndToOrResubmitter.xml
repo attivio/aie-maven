@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="responseAndToOrResubmitter" class="com.attivio.platform.transformer.response.ResubmitRelaxedQuery" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <workflowQueueMap name="workflowMap">
+      <if value="resubmit" workflow="searcher" routeImmediately="true"/>
+    </workflowQueueMap>
+    <property name="minHits" value="0"/>
+  </properties>
+</component>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="advteExtractor" class="com.attivio.advancedtextextraction.transformer.ingest.textextraction.ExtractFromSearchml32" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <container-property name="docTypeConfig" reference="advancedDocTypeConfig"/>
+    <property name="metadataConfigFilePath" value="advancedtextextraction/advancedtextextraction-metadata.xml"/>
+    <property name="demarkateTextElements" value="true"/>
+    <property name="deleteSearchmlFiles" value="true"/>
+    <property name="incrementalChildMode" value="true"/>
+    <property name="generateDeleteByQuery" value="false"/>
+    <container-property name="childDocumentPostProcessor" reference="defaultAdvTeChildPostProcessor"/>
+  </properties>
+</component>

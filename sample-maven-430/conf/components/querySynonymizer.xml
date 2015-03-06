@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="querySynonymizer" class="com.attivio.platform.transformer.query.ExpandSynonyms" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <map name="dictionaries">
+      <property name="en" value="dictionaries/synonyms_en.csv"/>
+    </map>
+    <list name="fields">
+      <entry value="title"/>
+      <entry value="content"/>
+    </list>
+  </properties>
+</component>

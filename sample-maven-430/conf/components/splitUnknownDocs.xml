@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="splitUnknownDocs" class="com.attivio.platform.transformer.ingest.routing.SplitDocumentListByFieldValue" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <property name="input" value="doctype"/>
+    <map name="routingMap">
+      <property name="Unrecognized" value="attivioTextExtraction"/>
+    </map>
+    <property name="routingMapElse" value="advteExtract"/>
+  </properties>
+</component>

@@ -1,0 +1,163 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:f="http://www.attivio.com/configuration/features/core" xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p" xmlns:spring="http://www.springframework.org/schema/beans" default-lazy-init="false" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.attivio.com/configuration/features/core http://www.attivio.com/configuration/features/coreFeatures.xsd">
+  <!-- Copyright 2013 Attivio Inc., All rights reserved. -->
+  <!-- System features file -->
+  <!--
+
+
+  From module: core-app
+  -->
+  <!-- Default feature beans.  These beans may be overridden by projects as required -->
+  <f:ingestion connectorClientNodeset="*" ingestClientNodeset="*" maxConcurrentRunningConnectors="5"/>
+  <f:messageResults nodeset="local"/>
+  <f:contentStore name="defaultContentStoreFeature" nodeset="local"/>
+  <f:query nodeset="*"/>
+  <f:queryLogging workflow="search" position="first"/>
+  <f:sink/>
+  <f:logging/>
+  <f:multinodeMonitor name="defaultMultinodeMonitorFeature"/>
+  <!-- Default index feature, a single partition, single node index, running on the "local" node -->
+  <f:index name="index">
+    <f:partitionSet>
+      <f:writeTo nodeset="local"/>
+    </f:partitionSet>
+  </f:index>
+  <!-- Index Feature Memory Limits (maxMemory is in bytes, 0=unlimited) -->
+  <f:engineResources name="default" maxMemory="0">
+    <f:index name="index"/>
+  </f:engineResources>
+  <f:spellcheck index="index">
+    <f:update onCommit="false" onOptimize="true"/>
+    <f:termFilter minLength="4" maxLength="255" minFrequency="2"/>
+    <f:sourceField name="content"/>
+    <f:sourceField name="title"/>
+    <f:queryProcessing>
+      <f:property name="minLength" value="4"/>
+      <f:property name="maxSuggestions" value="5"/>
+    </f:queryProcessing>
+    <f:resubmit enabled="false"/>
+  </f:spellcheck>
+  <f:facetFinder index="index" component="queryFacetFinder">
+    <f:update onCommit="false" onOptimize="true" onStartup="true"/>
+  </f:facetFinder>
+  <!-- Relevancy Configuration -->
+  <f:relevancy name="default" default-model="default">
+    <!-- Index Feature(s) to apply relevancy configuration to -->
+    <f:index name="index"/>
+    <!-- Workflow insertion points to perform relevancy model query expansion -->
+    <f:where workflow="queryAttivioLinguistics" position="before" relative-component="querySynonymizer"/>
+    <!-- General purpose relevancy profile -->
+    <f:model name="default">
+      <!-- Prefer fresher documents -->
+      <f:freshness field="date" decay="0.085"/>
+      <!-- 50% decay after 1hr -->
+      <!-- Relevancy For Default Search Field -->
+      <f:defaultSearchField>
+        <!-- Prefer docs with a query's terms in the title -->
+        <f:term field="title" boost="200"/>
+        <!-- Prefer titles that contain all of a query's terms as a phrase -->
+        <f:phrase field="title" boost="300"/>
+        <!-- Highly prefer exact title matches -->
+        <f:completeness field="title" boost="1000"/>
+      </f:defaultSearchField>
+    </f:model>
+    <!-- No-op relevancy profile with no boosting at all. Useful for debugging, doc scoring tests, etc -->
+    <f:model name="noop"/>
+  </f:relevancy>
+  <!-- load the landing and admin UI's -->
+  <f:deployWebapp directory="webapps/admin" context-path="/admin" nodeset="*"/>
+  <f:deployWebapp directory="webapps/root" context-path="/" nodeset="*"/>
+  <f:deployWebapp directory="webapps/docs" context-path="/docs" nodeset="*"/>
+  <f:insertSubflow position="first" workflow="ingestPostProcess" subflow="ingestGeoSearch"/>
+  <f:insertComponent position="first" workflow="queryInit" component="optimizeGeoSearch"/>
+  <!--
+
+
+  From module: adminui
+  -->
+  <f:deployWebapp directory="webapps/adminui" context-path="/adminui" nodeset="*"/>
+  <!--
+
+
+  From module: memory
+  -->
+  <bean name="com.attivio.memory.ReplaceAvmQueuesFeature" class="com.attivio.memory.ReplaceAvmQueuesFeature">
+    <property name="automaticallyReplaceAvmQueues" value="${memory.queues.automatic.avm.replacement}"/>
+  </bean>
+  <f:deployWebapp directory="webapps/memory" context-path="/memory" nodeset="*">
+    <f:menuEntry label="Memory Statistics" path="diagnostics"/>
+  </f:deployWebapp>
+  <bean name="com.attivio.memory.event.ResourceMonitorFeature" class="com.attivio.memory.event.ResourceMonitorFeature">
+    <property name="eventHandlers" value="eventHandlers"/>
+    <property name="resourceChecks" value="resourceChecks"/>
+  </bean>
+  <util:list id="eventHandlers">
+    <!-- fires system events to the performance monitoring server -->
+    <bean class="com.attivio.memory.event.handler.FireSystemEventHandler"/>
+  </util:list>
+  <util:list id="resourceChecks">
+    <bean class="com.attivio.memory.event.check.CheckForLowDisk">
+      <property name="path" value="${data.directory}"/>
+      <property name="lowDiskSpaceThresholdGb" value="${resource.monitor.lowDiskThresholdGb}"/>
+    </bean>
+    <bean class="com.attivio.memory.event.check.CheckForLowMemory">
+      <property name="lowMemoryPercentage" value="${resource.monitor.lowMemoryThresholdPercentage}"/>
+    </bean>
+    <!-- Sample check that will generate events from an xml file.   
+    <bean class="com.attivio.memory.event.check.EventGenerator">
+      <property name="eventFile" value="/some/file/path.xml" />
+    </bean>
+    -->
+  </util:list>
+  <!--
+
+
+  From module: profiler
+  -->
+  <!-- starts the yourkit profiler agent on baseport + 8 -->
+  <bean name="com.attivio.profiler.ProfilerFeature" class="com.attivio.profiler.ProfilerFeature"/>
+  <f:deployWebapp directory="webapps/profiler" context-path="/profiler" nodeset="*">
+    <f:menuEntry label="System Profiler" path="diagnostics"/>
+  </f:deployWebapp>
+  <!--
+
+
+  From module: scheduler
+  -->
+  <f:reorderService service="scheduler" startAfter="admin" name="reorderService.schedulerService"/>
+  <f:deployWebapp directory="webapps/scheduler" context-path="/scheduler" nodeset="*"></f:deployWebapp>
+  <!--
+
+
+  From module: advancedtextextraction
+  -->
+  <!-- This feature enables the Text Extraction Diagnostic Statistics in the Admin GUI -->
+  <f:deployWebapp directory="webapps/textextractionstats" context-path="/textextractionstats" nodeset="*">
+    <f:menuEntry label="Text Extraction Statistics" path="diagnostics"/>
+  </f:deployWebapp>
+  <!-- Uncomment this content store if you have enabled thumbnail generation in your ATE workflow. -->
+  <!--
+  <f:contentStore name="thumbnailImageContentStoreFeature"
+                  nodeset="local"
+                  insertContentStoreCleaner="false"
+                  storage="default"
+                  storeName="thumbnailImageContentStore" />
+  -->
+  <!-- Uncomment this content store if you have enabled preview generation in your ATE workflow. -->
+  <!--
+  <f:contentStore name="previewImageContentStoreFeature"
+                  nodeset="local"
+                  insertContentStoreCleaner="false"
+                  storage="default"
+                  storeName="previewImageContentStore" />
+  -->
+  <!-- Uncomment this feature if you have enabled thumbnail generation in your ATE workflow, and 
+       you want automatic clean up of generated images when associated AttivioDocuments are deleted. 
+   -->
+  <!-- 
+  <f:referenceFieldType class="com.attivio.app.referencecollectors.ContentPointerDeleterReferenceCollector">
+      <f:index name="index"/>
+      <f:property name="config" ref="imageGenerationContentPointerDeleterReferenceCollectorConfig"  /> 
+  </f:referenceFieldType>
+  -->
+</beans>

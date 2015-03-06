@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workflow xmlns="http://www.attivio.com/configuration/type/workflowType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="advteExtract" type="ingest" xsi:schemaLocation="http://www.attivio.com/configuration/type/workflowType http://www.attivio.com/configuration/type/workflowType.xsd ">
+  <documentTransformer name="advteExtractor"/>
+  <documentTransformer name="metadataBasedTitleCopier"/>
+  <documentTransformer name="dropPdfJobOptionsEntryFiles"/>
+  <documentTransformer name="cleanUpPdfBookmarkField"/>
+</workflow>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="childDocRouter" class="com.attivio.platform.transformer.ingest.routing.SplitChildDocumentsByFieldValue" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <property name="input" value="docstatus"/>
+    <property name="rejoin" value="false"/>
+    <map name="routingMap">
+      <property name="unprocessed" value="textExtraction"/>
+    </map>
+  </properties>
+</component>

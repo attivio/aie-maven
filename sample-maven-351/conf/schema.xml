@@ -1,0 +1,164 @@
+
+<att:attivio xmlns:att="http://www.attivio.com/configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.attivio.com/configuration http://www.attivio.com/configuration/attivio-config.xsd">
+  <!-- Copyright 2013 Attivio Inc., All rights reserved. -->
+  <!-- Schema file from all included modules -->
+  <!--
+
+
+  From module: core-app
+  -->
+  <schema name="default">
+    <fields default-search-field="content">
+      <field name="title" type="string" indexed="true" stored="true" sort="true" facet="false">
+        <properties>
+          <!-- make title support startswith, endswith, and equals query operators -->
+          <property name="index.anchors" value="true"/>
+          <!-- configure default highlighting of title field. -->
+          <property name="highlight.enabled" value="true"/>
+          <property name="highlight.fragment" value="false"/>
+          <!-- the hit markers should be updated based on the styling of the target UI -->
+          <property name="highlight.preTag" value="&lt;font style=&quot;background-color:yellow&quot;&gt;"/>
+          <property name="highlight.postTag" value="&lt;/font&gt;"/>
+          <!-- specify fields that will have query terms extracted from query for highlighting this field -->
+          <property name="highlight.whitelist" value="content,title,*_s"/>
+          <property name="index.tokenizer" value="naturalLanguage"/>
+        </properties>
+      </field>
+      <field name="teaser" type="string" indexed="false" stored="true" facet="false"/>
+      <field name="author" type="string" indexed="true" stored="true" facet="true"/>
+      <field name="keywords" type="string" indexed="true" stored="true" facet="true"/>
+      <field name="language" type="string" indexed="true" stored="true" facet="true" displayName="Primary Language"/>
+      <field name="languages" type="string" indexed="true" stored="true" facet="true" displayName="Detected Languages"/>
+      <field name="uri" type="string" indexed="true" stored="true" facet="false">
+        <properties>
+          <property name="index.tokenizer" value="alphanum"/>
+        </properties>
+      </field>
+      <field name="size" type="long" indexed="true" stored="true" sort="true"/>
+      <field name="img" type="string" indexed="false" stored="true" sort="false" facet="false" tokenize="false"/>
+      <field name="table" type="string" tokenize="false" indexed="true" stored="true" facet="true">
+        <properties>
+          <!-- table field used for filtering only (no contribution to document score/highlighting) -->
+          <property name="index.relevancy" value="false"/>
+        </properties>
+      </field>
+      <field name="cat" type="string" indexed="true" stored="true" facet="true" displayName="Category">
+        <properties>
+          <property name="index.anchors" value="true"/>
+          <property name="index.termVector" value="true"/>
+        </properties>
+      </field>
+      <field name="date" type="date" indexed="true" stored="true" sort="true" default="NOW" facet="false">
+        <properties>
+          <property name="workflow.date.format" value="MM/dd/yyyy"/>
+        </properties>
+      </field>
+      <field name="creationdate" type="date" indexed="true" stored="true" sort="true" facet="true"/>
+      <realtimeField name="tags" type="string" indexed="true" stored="true" sort="false" facet="true"/>
+      <!-- The text field containing the main body for the document.  
+           This field is populated by transformers and is also used for hit highlighting.  -->
+      <field name="text" type="text" tokenize="true" indexed="true" stored="true">
+        <properties>
+          <property name="highlight.fallbackField" value="teaser"/>
+          <property name="highlight.enabled" value="true"/>
+          <property name="highlight.fragment" value="true"/>
+          <property name="highlight.fragmentSize" value="100"/>
+          <property name="highlight.numFragments" value="3"/>
+          <!-- the hit markers should be updated based on the styling of the target UI -->
+          <property name="highlight.preTag" value="&lt;span style=&quot;background-color:yellow&quot;&gt;"/>
+          <property name="highlight.postTag" value="&lt;/span&gt;"/>
+          <!-- specify fields that will have query terms extracted from query for highlighting this field -->
+          <property name="highlight.whitelist" value="content,title,author,*_s"/>
+          <property name="index.tokenizer" value="naturalLanguage"/>
+        </properties>
+      </field>
+      <!-- The Default Search Field.
+           In general stages should NOT populate or manipulate this field. -->
+      <field name="content" type="text" indexed="true" stored="false">
+        <include-field name="title"/>
+        <include-field name="author"/>
+        <include-field name="text"/>
+        <include-field name="*_s"/>
+        <!--  include all the dynamic fields in the default text field -->
+        <include-field name="*_nl"/>
+        <!--  include all the natural language fields in the default text field -->
+      </field>
+      <!-- Geo Search Fields -->
+      <field name="position" type="point" indexed="true" stored="true" facet="false" sort="true"/>
+      <field name="latitude" type="double" indexed="true" stored="true" facet="false" sort="false"/>
+      <field name="longitude" type="double" indexed="true" stored="true" facet="false" sort="false"/>
+      <!-- Some of the email-related fields -->
+      <field name="to" type="string" indexed="true" stored="true" facet="false">
+        <properties>
+          <property name="index.tokenizer" value="alphanum"/>
+        </properties>
+      </field>
+      <field name="bcc" type="string" indexed="true" stored="true" facet="false">
+        <properties>
+          <property name="index.tokenizer" value="alphanum"/>
+        </properties>
+      </field>
+      <field name="cc" type="string" indexed="true" stored="true" facet="false">
+        <properties>
+          <property name="index.tokenizer" value="alphanum"/>
+        </properties>
+      </field>
+      <!-- Some of the text extraction related fields -->
+      <field name="sourcepath" type="string" indexed="true" stored="true" facet="false" displayName="Source Path">
+        <properties>
+          <property name="index.tokenizer" value="alphanum"/>
+        </properties>
+      </field>
+      <field name="filename" type="string" indexed="true" stored="true" facet="false" displayName="File Name">
+        <properties>
+          <property name="index.tokenizer" value="alphanum"/>
+        </properties>
+      </field>
+      <!-- Industry-standard MIME type value, e.g. "application/vns.ms-word" for a Word document -->
+      <field name="mimetype" type="string" indexed="true" stored="true" facet="true" tokenize="false"/>
+      <!-- "Parent", umbrella MIME type which applies across several document types,
+	         e.g. "application/vnd.ms-office" for Microsoft Office types
+	         which include Word, Excel, PowerPoint, etc. -->
+      <field name="parentmimetype" type="string" indexed="true" stored="true" facet="true" tokenize="false"/>
+      <!-- User-friendly name for document type, e.g. "Microsoft Word 2007 Document" -->
+      <field name="doctype" displayName="Document Type" type="string" indexed="true" stored="true" facet="true" tokenize="false"/>
+      <!-- Common, umbrella name for document types that belong together in one group, e.g. "Word" -->
+      <field name="parentdoctype" type="string" indexed="true" stored="true" facet="true" tokenize="false"/>
+      <!-- The ID of the parent document (null value if no parent) -->
+      <field name="parentid" displayName="ParentDocID" type="string" indexed="true" stored="true" facet="false" tokenize="false"/>
+      <!-- Ancestor document ID's (stored on a child document, the outermost ancestor first) -->
+      <field name="ancestorids" displayName="AncestorIDs" type="string" indexed="true" stored="true" tokenize="false" facet="false"/>
+      <!-- Lineage ID's: typically includes the ID's of ancestor folders for a given document
+      	   as well as the ID of the document itself. Primarily used for deletion of documents. -->
+      <field name="lineageids" displayName="lineageids" type="string" indexed="true" stored="true" tokenize="false" facet="false"/>
+      <!-- The list of paths (or names) of the entry documents (e.g. zip entries) -->
+      <field name="entrynames" displayName="EntryNames" type="string" indexed="true" stored="true" facet="false"/>
+      <!-- dynamic fields, a * in a field name implies dynamic and is used to match any sequence of characters -->
+      <!-- database columns -->
+      <field name="*_id" type="string" indexed="true" stored="true" facet="false" tokenize="false" joinable="true"/>
+      <field name="*_s" type="string" indexed="true" stored="true"/>
+      <field name="*_nl" type="string" indexed="true" stored="true" facet="false" sort="false">
+        <properties>
+          <property name="index.tokenizer" value="naturalLanguage"/>
+        </properties>
+      </field>
+      <field name="*_i" type="integer" indexed="true" stored="true" facet="true"/>
+      <field name="*_l" type="long" indexed="true" stored="true" facet="false"/>
+      <field name="*_d" type="double" indexed="true" stored="true" facet="true"/>
+      <field name="*_f" type="float" indexed="true" stored="true" facet="true"/>
+      <realtimeField name="*_r" type="string" indexed="true" stored="true" sort="false" facet="true"/>
+      <field name="*_t" type="date" indexed="true" stored="true" facet="true">
+        <properties>
+          <property name="workflow.date.format" value="MM/dd/yyyy"/>
+        </properties>
+      </field>
+      <!-- entity extraction fields -->
+      <field name="people" type="string" indexed="true" stored="true" facet="true"/>
+      <field name="location" type="string" indexed="true" stored="true" facet="true"/>
+      <field name="company" type="string" indexed="true" stored="true" facet="true"/>
+      <field name="concepts" type="string" indexed="true" stored="true" facet="true"/>
+      <!--  other notes: -->
+      <!--  all text/string fields are multivalued by default -->
+    </fields>
+  </schema>
+</att:attivio>

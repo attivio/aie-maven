@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<attivio xmlns="http://www.attivio.com/configuration/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.attivio.com/configuration/config http://www.attivio.com/configuration/config.xsd ">
+  <topology>
+    <layout default-service-nodeset="*" default-ingest-nodeset="indexers" default-query-nodeset="searchers" default-connector-nodeset="connectors">
+      <service-location name="scheduler" nodeset="admin"/>
+    </layout>
+  </topology>
+</attivio>

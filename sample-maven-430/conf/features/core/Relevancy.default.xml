@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ff:features xmlns:ff="http://www.attivio.com/configuration/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fbase="http://www.attivio.com/configuration/features/base" xmlns:f="http://www.attivio.com/configuration/features/core" xsi:schemaLocation="http://www.attivio.com/configuration/config http://www.attivio.com/configuration/config.xsd http://www.attivio.com/configuration/features/base http://www.attivio.com/configuration/features/baseFeatures.xsd http://www.attivio.com/configuration/features/core http://www.attivio.com/configuration/features/coreFeatures.xsd">
+  <f:relevancy default-model="default" enabled="true" name="default">
+    <f:index name="index"/>
+    <f:where position="before" relative-component="querySynonymizer" skip-if-exists="false" workflow="queryAttivioLinguistics"/>
+    <f:model name="default">
+      <f:freshness decay="0.085" field="date"/>
+      <f:static field="linkfactor"/>
+      <f:defaultSearchField>
+        <f:term boost="200" field="title"/>
+        <f:term boost="200" field="anchortext"/>
+        <f:phrase boost="300" field="title"/>
+        <f:phrase boost="300" field="anchortext"/>
+        <f:completeness boost="1000" field="title"/>
+        <f:completeness boost="1000" field="anchortext"/>
+      </f:defaultSearchField>
+    </f:model>
+    <f:model name="noop"/>
+  </f:relevancy>
+</ff:features>

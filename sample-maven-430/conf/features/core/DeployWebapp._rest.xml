@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ff:features xmlns:ff="http://www.attivio.com/configuration/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fbase="http://www.attivio.com/configuration/features/base" xmlns:f="http://www.attivio.com/configuration/features/core" xsi:schemaLocation="http://www.attivio.com/configuration/config http://www.attivio.com/configuration/config.xsd http://www.attivio.com/configuration/features/base http://www.attivio.com/configuration/features/baseFeatures.xsd http://www.attivio.com/configuration/features/core http://www.attivio.com/configuration/features/coreFeatures.xsd">
+  <f:deployWebapp context-path="/rest" directory="webapps/rest" enabled="true" featureNameSource="contextPath" nodeset="*" requires-authentication="false">
+    <f:menuEntry label="Debug Search" name="debug-search" path="search" uri="/rest/search"/>
+  </f:deployWebapp>
+</ff:features>

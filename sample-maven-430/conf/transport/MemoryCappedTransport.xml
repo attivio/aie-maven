@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<transport xmlns="http://www.attivio.com/configuration/type/transportType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" class="com.attivio.memory.MemoryCappedTransport" xmlns:c="http://www.attivio.com/configuration/type/componentType" xsi:schemaLocation="http://www.attivio.com/configuration/type/transportType http://www.attivio.com/configuration/type/transportType.xsd http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <property xmlns="http://www.attivio.com/configuration/type/componentType" name="megabytesAvailableForQueues" value="${memory.queues.max.megabytes}"/>
+  </properties>
+</transport>

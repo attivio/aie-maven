@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="selectFieldsFromHtmlDom" class="com.attivio.platform.transformer.ingest.textextraction.SelectFieldsFromHtmlDom" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <property name="htmlDomFieldName" value="html_dom"/>
+    <map name="selectorToFieldNameMap">
+      <property name="h1" value="h1"/>
+      <property name="h2" value="h2"/>
+      <property name="h3" value="h3"/>
+      <property name="h4" value="h4"/>
+      <property name="h5" value="h5"/>
+      <property name="h6" value="h6"/>
+    </map>
+  </properties>
+</component>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="advteConverter" class="com.attivio.advancedtextextraction.transformer.ingest.textextraction.AdvancedTextExtractionConvertDocument" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <property name="converterLocation" value="${advancedtextextraction.exe}"/>
+    <property name="libraryPath" value="${advancedtextextraction.libpath}"/>
+    <property name="optionFilePath" value="advancedtextextraction/advancedtextextraction-search-export.cfg"/>
+    <container-property name="docTypeConfig" reference="advancedDocTypeConfig"/>
+    <container-property name="childDocumentPostProcessor" reference="defaultAdvTeChildPostProcessor"/>
+    <property name="documentTimeout" value="${advancedtextextraction.documentTimeout}"/>
+  </properties>
+</component>

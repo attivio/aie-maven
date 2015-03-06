@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="removeExtraneousCharacters" class="com.attivio.platform.transformer.ingest.field.ReplacePatterns" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <description>Remove characters that may have been extracted by upstream components that we don't want.</description>
+  <properties>
+    <container-property name="mappings" reference="unicodeMappings"/>
+  </properties>
+</component>

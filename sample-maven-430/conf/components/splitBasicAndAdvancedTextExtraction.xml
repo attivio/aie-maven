@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="splitBasicAndAdvancedTextExtraction" class="com.attivio.platform.transformer.ingest.routing.SplitDocumentListByFieldValue" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <property name="input" value="mimetype"/>
+    <property name="rejoin" value="true"/>
+    <map name="routingMap">
+      <property name="text/plain" value="attivioTextExtraction"/>
+      <property name="text/html" value="htmlTextExtraction"/>
+      <property name="application/xhtml+xml" value="htmlTextExtraction"/>
+      <property name="application/x-mspublisher" value="attivioTextExtraction"/>
+      <property name="text/rtf" value="attivioTextExtraction"/>
+    </map>
+    <property name="routingMapElse" value="advteConvert"/>
+  </properties>
+</component>

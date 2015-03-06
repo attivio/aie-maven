@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ff:features xmlns:ff="http://www.attivio.com/configuration/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fac="http://www.attivio.com/configuration/features/autocomplete" xsi:schemaLocation="http://www.attivio.com/configuration/config http://www.attivio.com/configuration/config.xsd http://www.attivio.com/configuration/features/autocomplete http://www.attivio.com/configuration/features/autocompleteFeatures.xsd">
+  <fac:autocomplete enabled="true">
+    <fac:providers>
+      <fac:provider class="com.attivio.autocomplete.providers.EntityDictionaryProvider" name="dictionaryProvider">
+        <fac:property name="dictionaryName" value="autocomplete"/>
+        <fac:property name="defaultLocale" value="en"/>
+      </fac:provider>
+    </fac:providers>
+  </fac:autocomplete>
+</ff:features>

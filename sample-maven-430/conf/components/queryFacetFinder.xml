@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="queryFacetFinder" class="com.attivio.platform.transformer.query.FindFacets" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <property name="minCoverage" value="0.8"/>
+    <property name="minDocuments" value="100"/>
+    <list name="blacklistedFields">
+      <entry value="quantity"/>
+      <entry value="size"/>
+      <entry value="alerts.indexdate"/>
+    </list>
+  </properties>
+</component>

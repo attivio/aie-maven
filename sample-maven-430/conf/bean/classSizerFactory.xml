@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util" xmlns:sec="http://www.springframework.org/schema/security" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+  <bean name="classSizerFactory" class="com.attivio.memory.sizer.ClassSizerFactory">
+    <property name="ignores">
+      <set>
+        <value>com.attivio.platform.transport.jms.JmsCheckpointCapableHandler</value>
+        <value>com.attivio.platform.transport.jms.JmsMessageAckCheckpointHandler</value>
+        <value>com.attivio.messages.CgiRequest</value>
+        <value>com.attivio.messages.QueryRequest</value>
+        <value>com.attivio.messages.QueryResponse</value>
+      </set>
+    </property>
+    <property name="customSizers">
+      <map key-type="java.lang.Class">
+        <entry key="java.util.LinkedHashMap">
+          <bean class="com.attivio.memory.sizer.LinkedHashMapSizer"/>
+        </entry>
+        <entry key="java.util.HashMap">
+          <bean class="com.attivio.memory.sizer.HashMapSizer"/>
+        </entry>
+        <entry key="com.attivio.model.token.TokenList">
+          <bean class="com.attivio.model.token.TokenListSizer"/>
+        </entry>
+        <entry key="com.attivio.model.token.Token">
+          <bean class="com.attivio.model.token.TokenSizer"/>
+        </entry>
+        <entry key="org.dom4j.tree.DefaultDocument">
+          <bean class="com.attivio.memory.sizer.Dom4JDocSizer"/>
+        </entry>
+        <entry key="java.lang.String">
+          <bean class="com.attivio.memory.sizer.StringSizer"/>
+        </entry>
+      </map>
+    </property>
+  </bean>
+</beans>

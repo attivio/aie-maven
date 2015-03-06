@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util" xmlns:sec="http://www.springframework.org/schema/security" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+  <bean name="objectSizer" class="com.attivio.memory.sizer.MemoryObjectSizer">
+    <property name="factory" ref="classSizerFactory"/>
+    <property name="graphSizeLimit" value="60000"/>
+    <property name="dumpStackSizeLimit" value="20"/>
+    <property name="maxFullGraphDumps" value="1"/>
+  </bean>
+</beans>

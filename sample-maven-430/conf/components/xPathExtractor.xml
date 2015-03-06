@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="xPathExtractor" class="com.attivio.platform.transformer.ingest.xml.ExtractXPaths" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <description>Populates title, author and text fields from /doc/title, /doc/author, and /doc/text fields found in input 'bytes' field</description>
+  <properties>
+    <map name="xpaths">
+      <property name="title" value="/doc/title"/>
+      <property name="author" value="/doc/author"/>
+      <property name="text" value="/doc/text"/>
+    </map>
+  </properties>
+</component>

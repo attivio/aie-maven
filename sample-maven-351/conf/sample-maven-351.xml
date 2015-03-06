@@ -1,0 +1,45 @@
+<att:attivio xmlns:att="http://www.attivio.com/configuration" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xmlns:spring="http://www.springframework.org/schema/beans"
+             xmlns:f="http://www.attivio.com/configuration/features/core"
+             xsi:schemaLocation="http://www.attivio.com/configuration http://www.attivio.com/configuration/attivio-config.xsd
+                                 http://www.attivio.com/configuration/features/core http://www.attivio.com/configuration/features/coreFeatures.xsd
+                                 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+      
+      
+  <!-- Copyright 2013 Attivio Inc., All rights reserved. -->
+  <!-- This file imports all of the relevant configuration files in order to start your project. -->
+
+  <!-- Project generated against AIE 3.5.1 -->
+
+  <!--  The project name used for multinode configuration management.  -->
+  <configuration projectName="sample-maven-351" >
+    <!--  import any project specific properties referenced in later configuration files -->
+    <environment-properties>
+      <file-properties location="sample-maven-351.properties"/>
+    </environment-properties>    
+  </configuration>
+             
+  <imports>
+    <import resource="activated-modules.xml" />
+    <import resource="attivio-minimal.xml" />
+
+    <!-- load any included modules that have non feature based configurations -->
+    <import resource="advancedtextextraction/advancedtextextraction.xml" />
+    <import resource="memory/module.xml" />
+    <import resource="scheduler/scheduler.xml" />
+    <!--INCREMENTAL MODULES. DO NOT EDIT THIS LINE-->
+
+    <!-- note: you may make this nodes file a variable so you can use different ones for different environments. -->
+    <import resource="topology-nodes.xml" />
+    <import resource="topology-layout.xml" />
+    <import resource="tokenization.xml" />
+    <import resource="features.xml" />
+    <import resource="schema.xml" />
+
+    <!-- load the custom file last so it can replace / alter the configuration. -->
+    <import resource="custom.xml" />   
+    
+  </imports>
+
+</att:attivio>

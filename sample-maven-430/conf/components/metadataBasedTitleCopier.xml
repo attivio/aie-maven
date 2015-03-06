@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component xmlns="http://www.attivio.com/configuration/type/componentType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="metadataBasedTitleCopier" class="com.attivio.platform.transformer.ingest.field.Copy" xsi:schemaLocation="http://www.attivio.com/configuration/type/componentType http://www.attivio.com/configuration/type/componentType.xsd ">
+  <properties>
+    <map name="fieldMapping">
+      <property name="title" value="metadata.title"/>
+    </map>
+  </properties>
+</component>

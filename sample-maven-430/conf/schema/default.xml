@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns="http://www.attivio.com/configuration/type/schemaType" name="default" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.attivio.com/configuration/type/schemaType http://www.attivio.com/configuration/type/schemaType.xsd">
+  <fields default-search-field="content">
+    <field name="title" type="STRING" indexed="true" stored="true" facet="false" sort="true">
+      <properties>
+        <property name="index.anchors" value="true"/>
+        <property name="highlight.enabled" value="true"/>
+        <property name="highlight.fragment" value="false"/>
+        <property name="highlight.preTag" value="&lt;span class=&quot;highlight&quot;&gt;"/>
+        <property name="highlight.postTag" value="&lt;/span&gt;"/>
+        <property name="highlight.whitelist" value="content,title,*_s"/>
+        <property name="index.tokenizer" value="naturalLanguage"/>
+      </properties>
+    </field>
+    <field name="teaser" type="STRING" indexed="false" stored="true" facet="false" sort="false"/>
+    <field name="author" displayName="Author" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="keywords" displayName="Keywords" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="language" displayName="Primary Language" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="languages" displayName="Detected Languages" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="uri" type="STRING" indexed="true" stored="true" facet="false" sort="false">
+      <properties>
+        <property name="index.tokenizer" value="alphanum"/>
+      </properties>
+    </field>
+    <field name="size" type="LONG" indexed="true" stored="true" facet="true" sort="true"/>
+    <field name="table" displayName="Table" type="STRING" indexed="true" stored="true" facet="true" sort="false" tokenize="no">
+      <properties>
+        <property name="index.relevancy" value="false"/>
+      </properties>
+    </field>
+    <field name="cat" displayName="Category" type="STRING" indexed="true" stored="true" facet="true" sort="false">
+      <properties>
+        <property name="index.anchors" value="true"/>
+        <property name="index.termVector" value="true"/>
+      </properties>
+    </field>
+    <field name="date" displayName="Date" type="DATE" indexed="true" stored="true" facet="true" sort="true">
+      <properties>
+        <property name="workflow.date.format" value="MM/dd/yyyy"/>
+      </properties>
+    </field>
+    <field name="creationdate" displayName="Creation Date" type="DATE" indexed="true" stored="true" facet="true" sort="true"/>
+    <realtimeField name="tags" displayName="Tags" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="text" type="TEXT" indexed="true" stored="true" facet="false" sort="false" tokenize="yes">
+      <properties>
+        <property name="highlight.scopeMode" value="xml"/>
+        <property name="highlight.fallbackField" value="teaser"/>
+        <property name="highlight.enabled" value="true"/>
+        <property name="highlight.fragment" value="true"/>
+        <property name="highlight.fragmentSize" value="100"/>
+        <property name="highlight.numFragments" value="3"/>
+        <property name="highlight.preTag" value="&lt;span class=&quot;highlight&quot;&gt;"/>
+        <property name="highlight.postTag" value="&lt;/span&gt;"/>
+        <property name="highlight.whitelist" value="content,title,author,*_s"/>
+        <property name="index.tokenizer" value="naturalLanguage"/>
+      </properties>
+    </field>
+    <field name="content" type="TEXT" indexed="true" stored="false" facet="false" sort="false">
+      <include-field name="title"/>
+      <include-field name="author"/>
+      <include-field name="text"/>
+      <include-field name="anchortext"/>
+      <include-field name="*_s"/>
+      <include-field name="*_nl"/>
+    </field>
+    <field name="position" type="POINT" indexed="true" stored="true" facet="false" sort="true"/>
+    <field name="latitude" type="DOUBLE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="longitude" type="DOUBLE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="shape" type="SHAPE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="shape_min_x" type="DOUBLE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="shape_max_x" type="DOUBLE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="shape_min_y" type="DOUBLE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="shape_max_y" type="DOUBLE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="to" type="STRING" indexed="true" stored="true" facet="false" sort="false">
+      <properties>
+        <property name="index.tokenizer" value="alphanum"/>
+      </properties>
+    </field>
+    <field name="bcc" type="STRING" indexed="true" stored="true" facet="false" sort="false">
+      <properties>
+        <property name="index.tokenizer" value="alphanum"/>
+      </properties>
+    </field>
+    <field name="cc" type="STRING" indexed="true" stored="true" facet="false" sort="false">
+      <properties>
+        <property name="index.tokenizer" value="alphanum"/>
+      </properties>
+    </field>
+    <field name="sourcepath" displayName="Source Path" type="STRING" indexed="true" stored="true" facet="false" sort="false">
+      <properties>
+        <property name="index.tokenizer" value="alphanum"/>
+      </properties>
+    </field>
+    <field name="filename" displayName="File Name" type="STRING" indexed="true" stored="true" facet="false" sort="false">
+      <properties>
+        <property name="index.tokenizer" value="alphanum"/>
+      </properties>
+    </field>
+    <field name="mimetype" displayName="Mime Type" type="STRING" indexed="true" stored="true" facet="true" sort="false" tokenize="no"/>
+    <field name="parentmimetype" displayName="Parent Mime Type" type="STRING" indexed="true" stored="true" facet="true" sort="false" tokenize="no"/>
+    <field name="doctype" displayName="Document Type" type="STRING" indexed="true" stored="true" facet="true" sort="false" tokenize="no"/>
+    <field name="parentdoctype" displayName="Parent Document Type" type="STRING" indexed="true" stored="true" facet="true" sort="false" tokenize="no"/>
+    <field name="parentid" displayName="ParentDocID" type="STRING" indexed="true" stored="true" facet="false" sort="false" tokenize="no"/>
+    <field name="ancestorids" displayName="AncestorIDs" type="STRING" indexed="true" stored="true" facet="false" sort="false" tokenize="no"/>
+    <field name="lineageids" displayName="lineageids" type="STRING" indexed="true" stored="true" facet="false" sort="false" tokenize="no"/>
+    <field name="entrynames" displayName="EntryNames" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="*_id" type="STRING" indexed="true" stored="true" facet="false" sort="false" tokenize="no" joinable="true"/>
+    <field name="*_s" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="*_nl" type="STRING" indexed="true" stored="true" facet="false" sort="false">
+      <properties>
+        <property name="index.tokenizer" value="naturalLanguage"/>
+      </properties>
+    </field>
+    <field name="*_i" type="INTEGER" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="*_l" type="LONG" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="*_d" type="DOUBLE" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="*_f" type="FLOAT" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="*_m" type="MONEY" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="*_dec" type="DECIMAL" indexed="true" stored="true" facet="true" sort="false">
+      <properties>
+        <property name="decimal.scale" value="8"/>
+      </properties>
+    </field>
+    <realtimeField name="*_r" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="*_t" type="DATE" indexed="true" stored="true" facet="true" sort="false">
+      <properties>
+        <property name="workflow.date.format" value="MM/dd/yyyy"/>
+      </properties>
+    </field>
+    <field name="people" displayName="People" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="location" displayName="Locations" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="company" displayName="Companies" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="concepts" displayName="Concepts" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="hashtags" displayName="#HashTags" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="mentions" displayName="@Mentions" type="STRING" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="linkcount" type="INTEGER" multivalue="no" indexed="false" stored="true" facet="false" sort="true"/>
+    <field name="linkfactor" type="INTEGER" multivalue="no" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="anchortext" type="STRING" indexed="true" stored="true" facet="false" sort="false">
+      <properties>
+        <property name="index.anchors" value="true"/>
+      </properties>
+    </field>
+    <field name="thumbnailImageUri" displayName="Thumbnail Image URI" type="STRING" indexed="false" stored="true" facet="false" sort="false"/>
+    <field name="previewImageUri" displayName="Preview Image URI" type="STRING" indexed="false" stored="true" facet="false" sort="false"/>
+    <field name="morelikethisquery" type="STRING" indexed="true" stored="true" facet="false" sort="false" tokenize="no"/>
+    <field name="application" displayName="Application" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="appversion" displayName="AppVersion" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="backupdate" displayName="BackupDate" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="basefilelocation" displayName="BaseFileLocation" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="billto" displayName="BillTo" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="checkedby" displayName="CheckedBy" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="childcount" displayName="ChildCount" type="LONG" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="childdocpaths" displayName="ChildDocumentPaths" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="childpath" displayName="ChildPath" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="childtype" displayName="ChildType" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="clientsubmittime" displayName="ClientSubmitTime" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="comments" displayName="Comments" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="completeddate" displayName="CompletedDate" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="copyright" displayName="Copyright" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="description" displayName="Description" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="docrevnumber" displayName="DocRevDescriptor" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="docsecurity" displayName="DocSecurity" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="editminutes" displayName="EditMinutes" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="encoding" displayName="Encoding" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="fileext" displayName="FileExtension" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="footers" displayName="Footers" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="forwardto" displayName="ForwardTo" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="headers" displayName="Headers" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="istexttype" displayName="IsTextType" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="lastmodifier" displayName="LastModifier" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="lastprinteddate" displayName="LastPrintedDate" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="lastsaveddate" displayName="LastSavedDate" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="linksdirty" displayName="LinksDirty" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="linksuptodate" displayName="LinksUpToDate" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="mailstop" displayName="MailStop" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="manager" displayName="Manager" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="numchars" displayName="NumChars" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="numcharswithspaces" displayName="NumCharsWithSpaces" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="numhiddenslides" displayName="NumHiddenSlides" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="numlines" displayName="NumLines" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="nummmclips" displayName="NumMultimediaClips" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="numnotes" displayName="NumNotes" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="numpages" displayName="NumPages" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="numparagraphs" displayName="NumParagraphs" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="numslides" displayName="NumSlides" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="numwords" displayName="NumWords" type="INTEGER" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="presentationformat" displayName="PresentationFormat" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="receiveddate" displayName="ReceivedDate" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="sentdate" displayName="SentDate" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="receivedfrom" displayName="ReceivedFrom" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="recordedby" displayName="RecordedBy" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="recordeddate" displayName="RecordedDate" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="reference" displayName="Reference" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="replyto" displayName="ReplyTo" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="revisiondate" displayName="RevisionDate" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="revisionnotes" displayName="RevisionNotes" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="scalecrop" displayName="ScaleCrop" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="shareddoc" displayName="SharedDoc" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="sheetnames" displayName="SheetNames" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="sourcemodifieddate" displayName="SourceModifiedDate" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="sourceuri" displayName="SourceUri" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="subject" displayName="Subject" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="template" displayName="Template" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="typist" displayName="Typist" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="versiondate" displayName="VersionDate" type="DATE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="versionnotes" displayName="VersionNotes" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="versionnumber" displayName="VersionNumber" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="conversionError" displayName="ConversionError" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="conversionErrorCode" displayName="ConversionErrorCode" type="LONG" default="0" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="childindex" displayName="ChildIndex" type="LONG" indexed="true" stored="true" facet="true" sort="false"/>
+    <field name="links" displayName="Links" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="mailto" displayName="MailTo" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="watermark_type" displayName="WatermarkType" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="watermark_text" displayName="WatermarkText" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="transportmessageheaders" displayName="TransportMessageHeaders" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="h1" displayName="HeadingLevel1" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="h2" displayName="HeadingLevel2" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="h3" displayName="HeadingLevel3" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="h4" displayName="HeadingLevel4" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="h5" displayName="HeadingLevel5" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="h6" displayName="HeadingLevel6" type="TEXT" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="metadata.title" displayName="Metadata Title" type="STRING" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="thumbnailImageContentPointerId" displayName="Thumbnail Image Content Pointer Id" type="REFERENCE" indexed="true" stored="true" facet="false" sort="false"/>
+    <field name="previewImageContentPointerId" displayName="Preview Image Content Pointer Id" type="REFERENCE" indexed="true" stored="true" facet="false" sort="false"/>
+  </fields>
+</schema>

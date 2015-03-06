@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workflow xmlns="http://www.attivio.com/configuration/type/workflowType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="defaultResponse" type="response" xsi:schemaLocation="http://www.attivio.com/configuration/type/workflowType http://www.attivio.com/configuration/type/workflowType.xsd ">
+  <description>Base workflow for all QueryResponses</description>
+  <subflow name="customResponse"/>
+  <stage name="removeMetadataFromResponse"/>
+</workflow>

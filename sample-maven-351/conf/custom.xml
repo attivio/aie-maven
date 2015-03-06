@@ -1,0 +1,14 @@
+<att:attivio xmlns:att="http://www.attivio.com/configuration" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xmlns:spring="http://www.springframework.org/schema/beans" 
+             xmlns:f="http://www.attivio.com/configuration/features/core"
+             xmlns:util="http://www.springframework.org/schema/util" 
+             xmlns:p="http://www.springframework.org/schema/p"
+             xsi:schemaLocation="http://www.attivio.com/configuration http://www.attivio.com/configuration/attivio-config.xsd
+                                 http://www.attivio.com/configuration/features/core http://www.attivio.com/configuration/features/coreFeatures.xsd
+                                 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                                 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+  <!-- Copyright 2013 Attivio Inc., All rights reserved. -->
+  
+</att:attivio>

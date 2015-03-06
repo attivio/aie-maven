@@ -1,0 +1,1554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util" xmlns:sec="http://www.springframework.org/schema/security" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+  <bean name="legacyDocTypeConfig" class="com.attivio.textextraction.api.DocTypeConfig">
+    <property name="docTypes">
+      <list>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Word"/>
+          <property name="typeName" value="Microsoft Word pre-2007 Document"/>
+          <property name="extension" value=".doc"/>
+          <property name="parentMimeType" value="application/vnd.ms-office"/>
+          <property name="mimeType" value="application/vnd.ms-word"/>
+          <property name="groupDefault" value="true"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice.WordTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice.AdiWordTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice.WordLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Word"/>
+          <property name="typeName" value="Microsoft Word pre-2007 Template"/>
+          <property name="extension" value=".dot"/>
+          <property name="parentMimeType" value="application/vnd.ms-office"/>
+          <property name="mimeType" value="application/vnd.ms-word"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice.WordTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice.AdiWordTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice.WordLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Excel"/>
+          <property name="typeName" value="Microsoft Excel pre-2007 Workbook"/>
+          <property name="extension" value=".xls"/>
+          <property name="parentMimeType" value="application/vnd.ms-office"/>
+          <property name="mimeType" value="application/vnd.ms-excel"/>
+          <property name="groupDefault" value="true"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice.ExcelTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice.ExcelPoiTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Excel"/>
+          <property name="typeName" value="Microsoft Excel pre-2007 Template"/>
+          <property name="extension" value=".xlt"/>
+          <property name="parentMimeType" value="application/vnd.ms-office"/>
+          <property name="mimeType" value="application/vnd.ms-excel"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice.ExcelTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice.ExcelPoiTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft PowerPoint"/>
+          <property name="typeName" value="Microsoft PowerPoint pre-2007 Presentation"/>
+          <property name="extension" value=".ppt"/>
+          <property name="parentMimeType" value="application/vnd.ms-office"/>
+          <property name="mimeType" value="application/vnd.ms-powerpoint"/>
+          <property name="groupDefault" value="true"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice.PowerPointTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice.PowerPointPoiTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice.PowerPointLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft PowerPoint"/>
+          <property name="typeName" value="Microsoft PowerPoint pre-2007 Template"/>
+          <property name="extension" value=".pot"/>
+          <property name="parentMimeType" value="application/vnd.ms-office"/>
+          <property name="mimeType" value="application/vnd.ms-powerpoint"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice.PowerPointTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice.PowerPointPoiTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice.PowerPointLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft PowerPoint"/>
+          <property name="typeName" value="Microsoft PowerPoint pre-2007 Slideshow"/>
+          <property name="extension" value=".pps"/>
+          <property name="parentMimeType" value="application/vnd.ms-office"/>
+          <property name="mimeType" value="application/vnd.ms-powerpoint"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice.PowerPointTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice.PowerPointPoiTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice.PowerPointLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Word"/>
+          <property name="typeName" value="Microsoft Word 2007 Document"/>
+          <property name="extension" value=".docx"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.wordprocessingml"/>
+          <property name="groupDefault" value="true"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.Word07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.Word07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.Word07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Word"/>
+          <property name="typeName" value="Microsoft Word 2007 Template"/>
+          <property name="extension" value=".dotx"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.wordprocessingml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.Word07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.Word07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.Word07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Word"/>
+          <property name="typeName" value="Microsoft Word 2007 Macro-Enabled Document"/>
+          <property name="extension" value=".docm"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.wordprocessingml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.Word07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.Word07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.Word07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Word"/>
+          <property name="typeName" value="Microsoft Word 2007 Macro-Enabled Template"/>
+          <property name="extension" value=".dotm"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.wordprocessingml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.Word07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.Word07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.Word07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Excel"/>
+          <property name="typeName" value="Microsoft Excel 2007 Workbook"/>
+          <property name="extension" value=".xlsx"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.spreadsheetml"/>
+          <property name="groupDefault" value="true"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.Excel07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Excel"/>
+          <property name="typeName" value="Microsoft Excel 2007 Template"/>
+          <property name="extension" value=".xltx"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.spreadsheetml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.Excel07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Excel"/>
+          <property name="typeName" value="Microsoft Excel 2007 Macro-Enabled Workbook"/>
+          <property name="extension" value=".xlsm"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.spreadsheetml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.Excel07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Excel"/>
+          <property name="typeName" value="Microsoft Excel 2007 Macro-Enabled Template"/>
+          <property name="extension" value=".xltm"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.spreadsheetml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.Excel07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Excel"/>
+          <property name="typeName" value="Microsoft Excel 2007 Binary Workbook"/>
+          <property name="extension" value=".xlsb"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.spreadsheetml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.Excel07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Excel"/>
+          <property name="typeName" value="Microsoft Excel 2007 Add-In"/>
+          <property name="extension" value=".xlam"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.spreadsheetml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.Excel07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.Excel07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft PowerPoint"/>
+          <property name="typeName" value="Microsoft PowerPoint 2007 Presentation"/>
+          <property name="extension" value=".pptx"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.presentationml"/>
+          <property name="groupDefault" value="true"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft PowerPoint"/>
+          <property name="typeName" value="Microsoft PowerPoint 2007 Template"/>
+          <property name="extension" value=".potx"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.presentationml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft PowerPoint"/>
+          <property name="typeName" value="Microsoft PowerPoint 2007 Macro-Enabled Presentation"/>
+          <property name="extension" value=".pptm"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.presentationml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft PowerPoint"/>
+          <property name="typeName" value="Microsoft PowerPoint 2007 Macro-Enabled Template"/>
+          <property name="extension" value=".potm"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.presentationml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft PowerPoint"/>
+          <property name="typeName" value="Microsoft PowerPoint 2007 Add-In"/>
+          <property name="extension" value=".ppam"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.presentationml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft PowerPoint"/>
+          <property name="typeName" value="Microsoft PowerPoint 2007 Show"/>
+          <property name="extension" value=".ppsx"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.presentationml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft PowerPoint"/>
+          <property name="typeName" value="Microsoft PowerPoint 2007 Macro-Enabled Show"/>
+          <property name="extension" value=".ppsm"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/vnd.openxmlformats-officedocument.presentationml"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07TextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.msoffice07.PowerPoint07LinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Publisher"/>
+          <property name="typeName" value="Microsoft Publisher Document"/>
+          <property name="extension" value=".pub"/>
+          <property name="parentMimeType" value="application/vnd.ms-office"/>
+          <property name="mimeType" value="application/x-mspublisher"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice.PublisherTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msoffice.PublisherPoiTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Project"/>
+          <property name="typeName" value="Microsoft Project Document"/>
+          <property name="extension" value=".mpp"/>
+          <property name="parentMimeType" value="application/vnd.ms-office"/>
+          <property name="mimeType" value="application/vnd.ms-project"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.msoffice.MsProjectTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Adobe Acrobat PDF"/>
+          <property name="typeName" value="PDF Document"/>
+          <property name="extension" value=".pdf"/>
+          <property name="mimeType" value="application/pdf"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.pdf.JPodPdfTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Plain Text Document"/>
+          <property name="extension" value=".txt"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="groupDefault" value="true"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Initialization/Configuration File"/>
+          <property name="extension" value=".ini"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Properties/Configuration File"/>
+          <property name="extension" value=".props"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Java Properties File"/>
+          <property name="extension" value=".properties"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="ASCII Text File"/>
+          <property name="extension" value=".text"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="C Source Code File"/>
+          <property name="extension" value=".c"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="C++ Source Code File"/>
+          <property name="extension" value=".c++"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Configuration File"/>
+          <property name="extension" value=".conf"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="C++ Source Code File"/>
+          <property name="extension" value=".cpp"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Cascading Style Sheet"/>
+          <property name="extension" value=".css"/>
+          <property name="mimeType" value="text/css"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="C++ Source Code File"/>
+          <property name="extension" value=".cxx"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="C Header File"/>
+          <property name="extension" value=".h"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="C++ Header File"/>
+          <property name="extension" value=".hh"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="JavaScript Source Code File"/>
+          <property name="extension" value=".js"/>
+          <property name="mimeType" value="text/javascript"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Log File"/>
+          <property name="extension" value=".log"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Listing or List File"/>
+          <property name="extension" value=".lst"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Pascal Source Code File"/>
+          <property name="extension" value=".pas"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Perl Source Code File"/>
+          <property name="extension" value=".pl"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Assembler Source Code File"/>
+          <property name="extension" value=".s"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="UNIX Shell Script"/>
+          <property name="extension" value=".sh"/>
+          <property name="mimeType" value="application/x-sh"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Tab-Separated Values File"/>
+          <property name="extension" value=".tsv"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="List of Uniform Resource Identifiers File"/>
+          <property name="extension" value=".uri"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="List of Uniform Resource Identifiers File"/>
+          <property name="extension" value=".uris"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="WML Script"/>
+          <property name="extension" value=".wmls"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="DTD file"/>
+          <property name="extension" value=".dtd"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Java Source Code File"/>
+          <property name="extension" value=".java"/>
+          <property name="mimeType" value="text/java"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="JSF Source Code File"/>
+          <property name="extension" value=".jsf"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Java Source Code File"/>
+          <property name="extension" value=".jav"/>
+          <property name="mimeType" value="text/java"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Windows NT Command Script"/>
+          <property name="extension" value=".nt"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="CONSEL Output P-Value File"/>
+          <property name="extension" value=".pv"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="LaTeX Source Document"/>
+          <property name="extension" value=".latex"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="TeX Source Document"/>
+          <property name="extension" value=".tex"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Frequently Asked Questions File"/>
+          <property name="extension" value=".faq"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Comma-Separated Values File"/>
+          <property name="extension" value=".csv"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="ASCII Text File (.asc)"/>
+          <property name="extension" value=".asc"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="ANSI Graphic/Text"/>
+          <property name="extension" value=".ans"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Plain Text"/>
+          <property name="typeName" value="Formatted Manual Page with ME Macros"/>
+          <property name="extension" value=".me"/>
+          <property name="mimeType" value="text/plain"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.plaintext.PlainTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="HTML"/>
+          <property name="typeName" value="HTML Document"/>
+          <property name="extension" value=".html"/>
+          <property name="mimeType" value="text/html"/>
+          <property name="groupDefault" value="true"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.html.SimpleHtmlTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.html.HtmlLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="HTML"/>
+          <property name="typeName" value="HTML Document"/>
+          <property name="extension" value=".htm"/>
+          <property name="mimeType" value="text/html"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.html.SimpleHtmlTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.html.HtmlLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="HTML"/>
+          <property name="typeName" value="Active Server Page"/>
+          <property name="extension" value=".asp"/>
+          <property name="mimeType" value="text/html"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.html.SimpleHtmlTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.html.HtmlLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="HTML"/>
+          <property name="typeName" value="JSP Source Code File"/>
+          <property name="extension" value=".jsp"/>
+          <property name="mimeType" value="text/html"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.html.SimpleHtmlTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.html.HtmlLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="HTML"/>
+          <property name="typeName" value="HTC File"/>
+          <property name="extension" value=".htc"/>
+          <property name="mimeType" value="text/html"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.html.SimpleHtmlTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.html.HtmlLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="HTML"/>
+          <property name="typeName" value="JSP Page Fragment"/>
+          <property name="extension" value=".jspf"/>
+          <property name="mimeType" value="text/html"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.html.SimpleHtmlTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.html.HtmlLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="HTML"/>
+          <property name="typeName" value="SHTML File"/>
+          <property name="extension" value=".shtml"/>
+          <property name="mimeType" value="text/html"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.html.SimpleHtmlTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.html.HtmlLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="HTML"/>
+          <property name="typeName" value="PHP File"/>
+          <property name="extension" value=".php"/>
+          <property name="mimeType" value="text/html"/>
+          <property name="textType" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.html.SimpleHtmlTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.html.HtmlLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Rich Text Format"/>
+          <property name="typeName" value="RTF Document"/>
+          <property name="extension" value=".rtf"/>
+          <property name="mimeType" value="text/rtf"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.rtf.Rtf2FoTextExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.rtf.Rtf2FoLinkExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="WordPerfect"/>
+          <property name="typeName" value="WordPerfect Document"/>
+          <property name="extension" value=".wpd"/>
+          <property name="mimeType" value="application/vnd.wordperfect"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.wordperfect.WordPerfectTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="WordPerfect"/>
+          <property name="typeName" value="WordPerfect Ver. 5.0/5.1/5.2 Document"/>
+          <property name="extension" value=".wp5"/>
+          <property name="mimeType" value="application/vnd.wordperfect"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.wordperfect.WordPerfectTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="WordPerfect"/>
+          <property name="typeName" value="WordPerfect Ver. 5.1 Document"/>
+          <property name="extension" value=".wp51"/>
+          <property name="mimeType" value="application/vnd.wordperfect"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.wordperfect.WordPerfectTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="WordPerfect"/>
+          <property name="typeName" value="WordPerfect Ver. 6.0/6.1 Document"/>
+          <property name="extension" value=".wp6"/>
+          <property name="mimeType" value="application/vnd.wordperfect"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.wordperfect.WordPerfectTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="WordPerfect"/>
+          <property name="typeName" value="WordPerfect Ver. 6.0 Document"/>
+          <property name="extension" value=".w60"/>
+          <property name="mimeType" value="application/vnd.wordperfect"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.wordperfect.WordPerfectTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="WordPerfect"/>
+          <property name="typeName" value="WordPerfect Ver. 6.1 Document"/>
+          <property name="extension" value=".w61"/>
+          <property name="mimeType" value="application/vnd.wordperfect"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.wordperfect.WordPerfectTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="Zip Archive File"/>
+          <property name="extension" value=".zip"/>
+          <property name="mimeType" value="application/zip"/>
+          <property name="groupDefault" value="true"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.archive.ZipTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.ZipDataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.ZipLinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="Java Archive File"/>
+          <property name="extension" value=".jar"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/java-archive"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.archive.ZipTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.ZipDataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.ZipLinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="Java Enterprise Archive File"/>
+          <property name="extension" value=".ear"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/x-java-enterprisearchive"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.archive.ZipTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.ZipDataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.ZipLinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="Java Web Archive File"/>
+          <property name="extension" value=".war"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/x-java-webarchive"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.archive.ZipTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.ZipDataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.ZipLinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="Gzip Compressed Archive File"/>
+          <property name="extension" value=".gz"/>
+          <property name="mimeType" value="application/gzip"/>
+          <property name="groupDefault" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.GzipDataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.GzipLinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="Gzip Compressed Archive File"/>
+          <property name="extension" value=".tgz"/>
+          <property name="mimeType" value="application/gzip"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.GzipDataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.GzipLinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="Tape Archive File"/>
+          <property name="extension" value=".tar"/>
+          <property name="mimeType" value="application/tar"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.TarDataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.TarLinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="Bzip 2 Compressed Archive File"/>
+          <property name="extension" value=".bz2"/>
+          <property name="mimeType" value="application/bzip2"/>
+          <property name="groupDefault" value="true"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.Bzip2DataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.Bzip2LinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="Bzip 2 Compressed Archive File"/>
+          <property name="extension" value=".tbz2"/>
+          <property name="mimeType" value="application/bzip2"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.Bzip2DataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.Bzip2LinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="Bzip 2 Compressed Archive File"/>
+          <property name="extension" value=".tb2"/>
+          <property name="mimeType" value="application/bzip2"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.Bzip2DataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.Bzip2LinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Archive"/>
+          <property name="typeName" value="RAR"/>
+          <property name="extension" value=".rar"/>
+          <property name="mimeType" value="application/x-rar-compressed"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.RarDataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.RarLinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="JPG"/>
+          <property name="extension" value=".jpg"/>
+          <property name="mimeType" value="image/jpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.JpgTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="GIF"/>
+          <property name="extension" value=".gif"/>
+          <property name="mimeType" value="image/gif"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.ImageFileTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="PNG"/>
+          <property name="extension" value=".png"/>
+          <property name="mimeType" value="image/png"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.ImageFileTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="BMP"/>
+          <property name="extension" value=".bmp"/>
+          <property name="mimeType" value="image/bmp"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.ImageFileTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="PCX"/>
+          <property name="extension" value=".pcx"/>
+          <property name="mimeType" value="image/pcx"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.ImageFileTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="IFF"/>
+          <property name="extension" value=".iff"/>
+          <property name="mimeType" value="image/iff"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.ImageFileTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="RAS"/>
+          <property name="extension" value=".ras"/>
+          <property name="mimeType" value="image/ras"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.ImageFileTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="PBM"/>
+          <property name="extension" value=".pbm"/>
+          <property name="mimeType" value="image/x-portable-bitmap"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.ImageFileTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="PGM"/>
+          <property name="extension" value=".pgm"/>
+          <property name="mimeType" value="image/x-portable-greymap"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.ImageFileTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="PPM"/>
+          <property name="extension" value=".ppm"/>
+          <property name="mimeType" value="image/x-portable-pixmap"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.ImageFileTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="PSD"/>
+          <property name="extension" value=".psd"/>
+          <property name="mimeType" value="image/photoshop"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.image.ImageFileTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="SVG"/>
+          <property name="extension" value=".svg"/>
+          <property name="parentMimeType" value="text/xml"/>
+          <property name="mimeType" value="image/svg+xml"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="ICO"/>
+          <property name="extension" value=".ico"/>
+          <property name="mimeType" value="image/x-icon"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="RAW"/>
+          <property name="extension" value=".raw"/>
+          <property name="mimeType" value="image/x-raw"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="TGA"/>
+          <property name="extension" value=".tga"/>
+          <property name="mimeType" value="image/x-tga"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="TIF"/>
+          <property name="extension" value=".tif"/>
+          <property name="mimeType" value="image/tiff"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="TIF"/>
+          <property name="extension" value=".tiff"/>
+          <property name="mimeType" value="image/tiff"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="DNG"/>
+          <property name="extension" value=".dng"/>
+          <property name="parentMimeType" value="image/tiff"/>
+          <property name="mimeType" value="image/dng"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="PSP"/>
+          <property name="extension" value=".psp"/>
+          <property name="mimeType" value="image/x-paintshoppro"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="XCF"/>
+          <property name="extension" value=".xcf"/>
+          <property name="mimeType" value="image/xcf"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="Corel Vector Graphic Drawing"/>
+          <property name="extension" value=".cdr"/>
+          <property name="mimeType" value="application/vnd.corel-draw"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="Corel Vector Graphic Drawing"/>
+          <property name="extension" value=".fig"/>
+          <property name="mimeType" value="image/x-xfig"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="Windows Metafile"/>
+          <property name="extension" value=".wmf"/>
+          <property name="mimeType" value="image/wmf"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="X Bitmap Graphic"/>
+          <property name="extension" value=".xbm"/>
+          <property name="mimeType" value="image/x-xbitmap"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="UNIX Icon File"/>
+          <property name="extension" value=".xpm"/>
+          <property name="mimeType" value="image/xpm"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="Autodesk Design Web Format"/>
+          <property name="extension" value=".dwf"/>
+          <property name="mimeType" value="image/x-dwf"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="AutoCAD Drawing Database"/>
+          <property name="extension" value=".dwg"/>
+          <property name="mimeType" value="image/x-dwg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="AutoCAD Drawing Interchange Format"/>
+          <property name="extension" value=".dxf"/>
+          <property name="mimeType" value="image/x-dxf"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Image"/>
+          <property name="typeName" value="iTunes Cover Flow Data File"/>
+          <property name="extension" value=".itc"/>
+          <property name="mimeType" value="image/x-itunes-albumartwork"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="MIME Message"/>
+          <property name="typeName" value="EML"/>
+          <property name="extension" value=".eml"/>
+          <property name="mimeType" value="message/rfc822"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.mime.MimeMessageTextExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Mail Message"/>
+          <property name="typeName" value="Microsoft MSG Mail Message"/>
+          <property name="extension" value=".msg"/>
+          <property name="parentMimeType" value="application/vnd.ms-office"/>
+          <property name="mimeType" value="application/msoutlook"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.msg.MsgTextExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Microsoft Outlook PST"/>
+          <property name="typeName" value="Microsoft Outlook PST"/>
+          <property name="extension" value=".pst"/>
+          <property name="mimeType" value="application/vnd.ms-outlook"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Lotus Notes"/>
+          <property name="typeName" value="Lotus Notes Database"/>
+          <property name="extension" value=".nsf"/>
+          <property name="mimeType" value="application/vnd.lotus-notes"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.lotusnotes.LnDataExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Lotus Notes Database Entry"/>
+          <property name="typeName" value="Lotus Notes Document"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.lotusnotes.LnDocEntryExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Lotus Notes Database Entry"/>
+          <property name="typeName" value="Lotus Notes Email"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.lotusnotes.LnEmailEntryExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="3GPP Multimedia File"/>
+          <property name="extension" value=".3gp"/>
+          <property name="mimeType" value="video/3gpp"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="3GPP2 Multimedia File"/>
+          <property name="extension" value=".3g2"/>
+          <property name="mimeType" value="video/3gpp"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Audio Interchange File Format"/>
+          <property name="extension" value=".aiff"/>
+          <property name="mimeType" value="audio/x-aiff"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Advanced Systems Format File"/>
+          <property name="extension" value=".asf"/>
+          <property name="mimeType" value="video/x-ms-asf"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="AU Audio File"/>
+          <property name="extension" value=".au"/>
+          <property name="mimeType" value="audio/au"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Audio Video Interleave File"/>
+          <property name="extension" value=".avi"/>
+          <property name="mimeType" value="video/x-msvideo"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Free Lossless Audio Codec File"/>
+          <property name="extension" value=".flac"/>
+          <property name="mimeType" value="audio/flac"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Flash Video File"/>
+          <property name="extension" value=".flv"/>
+          <property name="mimeType" value="video/x-flv"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Apple Lossless Audio File"/>
+          <property name="extension" value=".m4a"/>
+          <property name="mimeType" value="audio/mp4"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="iTunes Music Store Audio File"/>
+          <property name="extension" value=".m4p"/>
+          <property name="mimeType" value="audio/mp4"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="MIDI File"/>
+          <property name="extension" value=".mid"/>
+          <property name="mimeType" value="audio/midi"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="MIDI File"/>
+          <property name="extension" value=".midi"/>
+          <property name="mimeType" value="audio/midi"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="RMID MIDI File"/>
+          <property name="extension" value=".rmi"/>
+          <property name="mimeType" value="audio/midi"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Apple QuickTime Movie"/>
+          <property name="extension" value=".mov"/>
+          <property name="mimeType" value="video/quicktime"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="MPEG Layer II Compressed Audio File"/>
+          <property name="extension" value=".mp2"/>
+          <property name="mimeType" value="audio/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="MP3 Audio File"/>
+          <property name="extension" value=".mp3"/>
+          <property name="mimeType" value="audio/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="MPEG-4 Video File"/>
+          <property name="extension" value=".mp4"/>
+          <property name="mimeType" value="audio/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="MPEG-4 Video File"/>
+          <property name="extension" value=".mpg4"/>
+          <property name="mimeType" value="audio/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="iTunes Video File"/>
+          <property name="extension" value=".m4v"/>
+          <property name="mimeType" value="audio/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="iTunes Video File"/>
+          <property name="extension" value=".mp4v"/>
+          <property name="mimeType" value="audio/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="DivX-Encoded Movie File"/>
+          <property name="extension" value=".divx"/>
+          <property name="mimeType" value="audio/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Xvid-Encoded Video File"/>
+          <property name="extension" value=".divx"/>
+          <property name="mimeType" value="audio/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="MPEG Video File"/>
+          <property name="extension" value=".mpg"/>
+          <property name="mimeType" value="video/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="MPEG Video File"/>
+          <property name="extension" value=".mpeg"/>
+          <property name="mimeType" value="video/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="MPEG-2 Video File"/>
+          <property name="extension" value=".m2v"/>
+          <property name="mimeType" value="video/mpeg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Ogg Vorbis Compressed Audio File"/>
+          <property name="extension" value=".ogg"/>
+          <property name="mimeType" value="application/x-ogg"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Real Media File"/>
+          <property name="extension" value=".rm"/>
+          <property name="mimeType" value="application/vnd.rn-realmedia"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Real Audio Media File"/>
+          <property name="extension" value=".ram"/>
+          <property name="mimeType" value="application/vnd.rn-realmedia"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Flash Movie File"/>
+          <property name="extension" value=".swf"/>
+          <property name="mimeType" value="application/x-shockwave-flash"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="WAVE Audio File"/>
+          <property name="extension" value=".wav"/>
+          <property name="mimeType" value="audio/x-wav"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Windows Media Audio File"/>
+          <property name="extension" value=".wma"/>
+          <property name="parentMimeType" value="application/x-ms-wm"/>
+          <property name="mimeType" value="audio/x-ms-wma"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Windows Media Video File"/>
+          <property name="extension" value=".wmv"/>
+          <property name="parentMimeType" value="application/x-ms-wm"/>
+          <property name="mimeType" value="video/x-ms-wmv"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Windows Media Video File"/>
+          <property name="extension" value=".wm"/>
+          <property name="parentMimeType" value="application/x-ms-wm"/>
+          <property name="mimeType" value="video/x-ms-wmv"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Multimedia"/>
+          <property name="typeName" value="Compressed Windows Media Player Skin"/>
+          <property name="extension" value=".wmz"/>
+          <property name="parentMimeType" value="application/zip"/>
+          <property name="mimeType" value="application/x-ms-wmz"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.archive.ZipTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.archive.ZipDataExtractor"/>
+          <property name="linkExtractorClass" value="com.attivio.textextraction.archive.ZipLinkExtractor"/>
+          <property name="compoundDocumentStrategy">
+            <bean class="com.attivio.textextraction.api.CompoundDocumentStrategy">
+              <property name="includeChildDocuments" value="true"/>
+              <property name="aggregateChildDocuments" value="false"/>
+            </bean>
+          </property>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Audio"/>
+          <property name="typeName" value="Windows Media Player Playlist"/>
+          <property name="extension" value=".wpl"/>
+          <property name="mimeType" value="vnd.ms-wpl"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Adobe Indesign"/>
+          <property name="typeName" value="Adobe InDesign INX Document"/>
+          <property name="extension" value=".inx"/>
+          <property name="mimeType" value="text/xml"/>
+          <property name="textType" value="true"/>
+          <property name="typeRecognizerClass" value="com.attivio.textextraction.indesign.AdobeInxTypeRecognizer"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.indesign.AdobeInxTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+        <bean class="com.attivio.textextraction.api.DocTypeInfo">
+          <property name="parentTypeName" value="Unrecognized"/>
+          <property name="typeName" value="Unrecognized"/>
+          <property name="mimeType" value="undetected"/>
+          <property name="textExtractorClass" value="com.attivio.textextraction.misc.NoOpTextExtractor"/>
+          <property name="compoundDocumentStrategy" ref="defaultLegacyCompoundDocStrategy"/>
+        </bean>
+      </list>
+    </property>
+  </bean>
+</beans>

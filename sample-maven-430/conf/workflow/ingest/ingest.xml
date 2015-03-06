@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workflow xmlns="http://www.attivio.com/configuration/type/workflowType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="ingest" type="ingest" xsi:schemaLocation="http://www.attivio.com/configuration/type/workflowType http://www.attivio.com/configuration/type/workflowType.xsd ">
+  <description>Base workflow that prepares arbitrary content for indexing</description>
+  <subflow name="ingestInit"/>
+  <subflow name="ingestPreProcess"/>
+  <subflow name="attivioLinguistics"/>
+  <subflow name="ingestPostProcess"/>
+  <subflow name="indexer"/>
+</workflow>

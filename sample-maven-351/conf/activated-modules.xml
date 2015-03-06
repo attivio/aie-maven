@@ -1,0 +1,32 @@
+<att:attivio xmlns:att="http://www.attivio.com/configuration" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xmlns:spring="http://www.springframework.org/schema/beans"
+             xmlns:f="http://www.attivio.com/configuration/features/core"
+             xsi:schemaLocation="http://www.attivio.com/configuration http://www.attivio.com/configuration/attivio-config.xsd
+                                 http://www.attivio.com/configuration/features/core http://www.attivio.com/configuration/features/coreFeatures.xsd
+                                 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <!-- Copyright 2013 Attivio Inc., All rights reserved. -->        
+      
+  <!-- WARNING!  
+       This file is rewritten every time createproject is run.
+       Any modifications to this file will be lost if createproject is rerun for any reason.
+       Also, modules activated outside of this file will be ignored from a createproject perspective.
+  -->
+
+  <!--  Used to determine what module's components to show in the gui.  -->
+  <configuration projectName="sample-maven-351" >
+    <modules>
+          <module name="core-app" active="true" />
+          <module name="adminui" active="true" />
+          <module name="memory" active="true" />
+          <module name="profiler" active="true" />
+          <module name="scheduler" active="true" />
+          <module name="advancedtextextraction" active="true" />
+              <module name="sample-maven-351" active="true" />
+        </modules>
+  </configuration>
+             
+
+
+</att:attivio>

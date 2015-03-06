@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ff:features xmlns:ff="http://www.attivio.com/configuration/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:profiler="http://www.attivio.com/configuration/features/profiler" xsi:schemaLocation="http://www.attivio.com/configuration/config http://www.attivio.com/configuration/config.xsd http://www.attivio.com/configuration/features/profiler http://www.attivio.com/configuration/features/profilerFeatures.xsd">
+  <profiler:profiler enabled="true"/>
+</ff:features>

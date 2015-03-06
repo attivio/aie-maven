@@ -1,0 +1,14 @@
+<attivio>
+  <!-- Copyright 2013 Attivio Inc., All rights reserved. -->
+  <module name="module-sample-maven-351" version="-1">
+    <connectors>
+      <connector name="sampleSdkScanner" class="com.acme.SampleScanner" />
+    </connectors>
+    <components>
+      <component class="com.acme.SampleAdvancedIngestTransformer" />
+      <component class="com.acme.SampleQueryTransformer" />
+      <component class="com.acme.SampleResponseTransformer" />
+      <component class="com.acme.SampleSimpleIngestTransformer" />
+    </components>
+  </module>
+</attivio>

@@ -1,0 +1,36 @@
+<att:attivio xmlns:att="http://www.attivio.com/configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.attivio.com/configuration http://www.attivio.com/configuration/attivio-config.xsd">
+
+  <!-- Copyright 2013 Attivio Inc., All rights reserved. -->
+
+  <!-- This file contains a sample list of nodes and nodesets.
+       Different versions of this file might lay out different topologies for different 
+       deployment environments (development/qa/staging/production)
+   -->
+  
+  <!--
+  <topology>
+    <nodes>
+      <node name="connector" host="host1" port="17000" />
+      <node name="processor1" host="host2" port="17000" />
+      <node name="processor2" host="host3" port="17000" />
+      <node name="index" host="host4" port="17000" />
+    </nodes>
+    <nodesets>
+      <nodeset name="connectors">
+        <include name="connector" />
+      </nodeset>
+      <nodeset name="processors">
+        <include name="processor1" />
+        <include name="processor2" />
+      </nodeset>
+      <nodeset name="indexers">
+        <include name="index" />
+      </nodeset>
+      <nodeset name="primary">
+        <include name="index" />
+      </nodeset>
+    </nodesets>
+  </topology>
+  -->
+
+</att:attivio>

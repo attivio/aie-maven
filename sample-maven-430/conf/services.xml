@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<services xmlns="http://www.attivio.com/configuration/type/servicesType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.attivio.com/configuration/type/servicesType http://www.attivio.com/configuration/type/servicesType.xsd ">
+  <service name="scheduler"/>
+</services>

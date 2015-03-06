@@ -1,0 +1,35 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:f="http://www.attivio.com/configuration/features/core" default-lazy-init="false" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.attivio.com/configuration/features/core http://www.attivio.com/configuration/features/coreFeatures.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+  <!-- Copyright 2013 Attivio Inc., All rights reserved. -->
+  <!--
+
+
+  From module: core-app
+  -->
+  <!--  all the system tokenizers -->
+  <f:tokenizer name="alphanum" ref="tokenizer.alphanum"/>
+  <f:tokenizer name="alphanum.nl" ref="tokenizer.alphanum.nl"/>
+  <f:tokenizer name="html" ref="tokenizer.alphanum.html"/>
+  <f:tokenizer name="md5" class="com.attivio.platform.tokenizer.DigestTokenizer"/>
+  <bean name="tokenizer.alphanum" class="com.attivio.platform.tokenizer.AlphaNumericTokenizer"/>
+  <bean name="tokenizer.alphanum.html" class="com.attivio.platform.tokenizer.AlphaNumericTokenizer">
+    <constructor-arg>
+      <bean class="com.attivio.lucene.analysis.HTMLStripReaderFactory"/>
+    </constructor-arg>
+  </bean>
+  <bean name="tokenizer.alphanum.nl" class="com.attivio.platform.tokenizer.AlphaNumericTokenizer">
+    <property name="punctuation" value="true"/>
+  </bean>
+  <bean name="tokenizerRegistration.default" class="com.attivio.app.config.feature.MultiLanguageTokenizerFeature">
+    <property name="name" value="default"/>
+    <property name="group" value="default"/>
+    <property name="fallbackLocale" value="en_US"/>
+    <property name="fallbackTokenizer" ref="tokenizer.alphanum"/>
+  </bean>
+  <bean name="tokenizerRegistration.naturalLanguage" class="com.attivio.app.config.feature.MultiLanguageTokenizerFeature">
+    <property name="name" value="naturalLanguage"/>
+    <property name="group" value="naturalLanguage"/>
+    <property name="fallbackLocale" value="en_US"/>
+    <property name="fallbackTokenizer" ref="tokenizer.alphanum.nl"/>
+  </bean>
+</beans>

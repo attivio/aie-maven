@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util" xmlns:sec="http://www.springframework.org/schema/security" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+  <bean name="RuleBasedLanguageIdentifierDefaultEn" class="com.attivio.platform.util.linguistics.RuleBasedLanguageIdentifier">
+    <property name="rules">
+      <list>
+        <bean class="com.attivio.platform.util.linguistics.LanguageRule">
+          <property name="blocks" value="CJK_COMPATIBILITY,CJK_COMPATIBILITY_IDEOGRAPHS,CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT,CJK_RADICALS_SUPPLEMENT,CJK_UNIFIED_IDEOGRAPHS,CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A,CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B"/>
+          <property name="language" value="zh"/>
+          <property name="minChars" value="10"/>
+          <property name="minFraction" value="0.9"/>
+        </bean>
+        <bean class="com.attivio.platform.util.linguistics.LanguageRule">
+          <property name="blocks" value="KATAKANA,HIRAGANA,KATAKANA_PHONETIC_EXTENSIONS,CJK_COMPATIBILITY,CJK_COMPATIBILITY_IDEOGRAPHS,CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT,CJK_RADICALS_SUPPLEMENT,CJK_UNIFIED_IDEOGRAPHS,CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A,CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B"/>
+          <property name="language" value="ja"/>
+          <property name="minChars" value="5"/>
+          <property name="minFraction" value="0.8"/>
+        </bean>
+        <bean class="com.attivio.platform.util.linguistics.LanguageRule">
+          <property name="blocks" value="HANGUL_JAMO,HANGUL_SYLLABLES,CJK_COMPATIBILITY,CJK_COMPATIBILITY_IDEOGRAPHS,CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT,CJK_RADICALS_SUPPLEMENT,CJK_UNIFIED_IDEOGRAPHS,CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A,CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B"/>
+          <property name="language" value="ko"/>
+          <property name="minChars" value="5"/>
+          <property name="minFraction" value="0.8"/>
+        </bean>
+        <bean class="com.attivio.platform.util.linguistics.LanguageRule">
+          <property name="blocks" value="CJK_COMPATIBILITY,CJK_COMPATIBILITY_IDEOGRAPHS,CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT,CJK_RADICALS_SUPPLEMENT,CJK_UNIFIED_IDEOGRAPHS,CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A,CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B"/>
+          <property name="language" value="zh"/>
+          <property name="minChars" value="1"/>
+          <property name="minFraction" value="0.5"/>
+        </bean>
+        <bean class="com.attivio.platform.util.linguistics.LanguageRule">
+          <property name="blocks" value="CYRILLIC,CYRILLIC_SUPPLEMENTARY"/>
+          <property name="language" value="ru"/>
+          <property name="minChars" value="1"/>
+          <property name="minFraction" value="0.8"/>
+        </bean>
+        <bean class="com.attivio.platform.util.linguistics.LanguageRule">
+          <property name="blocks" value="HEBREW"/>
+          <property name="language" value="he"/>
+          <property name="minChars" value="1"/>
+          <property name="minFraction" value="0.8"/>
+        </bean>
+        <bean class="com.attivio.platform.util.linguistics.LanguageRule">
+          <property name="blocks" value="ARABIC"/>
+          <property name="language" value="ar"/>
+          <property name="minChars" value="1"/>
+          <property name="minFraction" value="0.8"/>
+        </bean>
+        <bean class="com.attivio.platform.util.linguistics.LanguageRule">
+          <property name="blocks" value="BASIC_LATIN"/>
+          <property name="language" value="en"/>
+          <property name="minChars" value="1"/>
+          <property name="minFraction" value="0.8"/>
+        </bean>
+      </list>
+    </property>
+  </bean>
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<attivio xmlns="http://www.attivio.com/configuration/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.attivio.com/configuration/config http://www.attivio.com/configuration/config.xsd ">
+  <configuration projectName="sample-maven-430">
+    <haft faultTolerant="false"/>
+    <message-queue size="3"/>
+    <default-performance maxIngestInstances="0" maxQueryInstances="0"/>
+    <security keyStoreFileName="attivio.ks" trustStoreFileName="attivio.ks" keyPassword="*{QeDBUhv9roY=}" storePassword="*{QeDBUhv9roY=}" trustPassword="*{QeDBUhv9roY=}" useSSL="${security.useSSL}">
+      <administrators>
+        <principal realm="aie" principal="aieadmin" name="aieadmin" type="USER" password="*{QeDBUhv9roY=}"/>
+      </administrators>
+    </security>
+    <modules>
+      <module name="core-app" active="true"/>
+      <module name="adminui" active="true"/>
+      <module name="memory" active="true"/>
+      <module name="profiler" active="true"/>
+      <module name="scheduler" active="true"/>
+      <module name="advancedtextextraction" active="true"/>
+      <module name="autocomplete" active="true"/>
+      <module name="rest" active="true"/>
+      <module name="sail" active="true"/>
+      <module name="sample-maven-430" active="true"/>
+    </modules>
+  </configuration>
+</attivio>
