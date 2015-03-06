@@ -3,20 +3,19 @@ AIE Maven Repository
 ====================
 
 This project provides maven POMs and scripts that install artifacts from your AIE installation into your (private) maven repository,
-thereby allowing you to use maven for build automation of your AIE-related projects.
-We also provide sample mavenized AIE projects.
+thereby allowing you to use maven for build automation of your AIE-related projects. We also provide sample mavenized AIE projects.
 
 Installation to the local repository
 ------------------------------------
-You're probably most familiar with downloading artifacts from Maven central, or perhaps adding another repository to your POM to fetch artifacts.
-Maven caches artifacts in your local repository, by default under ``%USERPROFILE%\.m2\repository`` (windows) or ``${HOME}/.m2/repository`` (linux).
-The scripts we provide can install artifacts from your local AIE installation to your local repository using the [maven deploy-file plugin](http://maven.apache.org/plugins/maven-deploy-plugin/deploy-file-mojo.html).
+You're probably most familiar with downloading artifacts from Maven central, or perhaps adding another repository to your POM 
+to fetch artifacts. Maven caches artifacts in your local repository, by default under ``%USERPROFILE%\.m2\repository`` (windows) 
+or ``${HOME}/.m2/repository`` (linux). The scripts we provide can install artifacts from your local AIE installation to your 
+local repository using the [maven deploy-file plugin](http://maven.apache.org/plugins/maven-deploy-plugin/deploy-file-mojo.html).
 
 Installation to a private repository
 ------------------------------------
 Many organizations maintain their own private maven repositories/Nexus installations with a curated set of artifacts 
-(e.g. to avoid inadvertent use of artifacts with copy-left licenses).
-The scripts we provide can install AIE artifacts to your private maven repository.
+(e.g. to avoid inadvertent use of artifacts with copy-left licenses). The scripts we provide can install AIE artifacts to your private maven repository.
 Just run the scripts with the parameters needed by the [maven deploy-file plugin](http://maven.apache.org/plugins/maven-deploy-plugin/deploy-file-mojo.html) to install artifacts in your private repository.
 
 Usage
@@ -26,7 +25,8 @@ Usage
 * Ensure Java environment is set up (java and maven in path, JAVA_HOME set)
 * Set the ATTIVIO_HOME environment variable
 * Download from [./repo](https://github.com/attivio/aie-maven/tree/master/repo) and unzip aie-poms-[version].zip to a temporary directory
-* Execute the deployment scripts.  The scripts pass all parameters to the maven command line.  You must specify at a minimum the url and repository parameters required by the deploy-file plugin.
+* Execute the deployment scripts.  The scripts pass all parameters to the maven command line.  You must specify at a minimum 
+the url and repository parameters required by the deploy-file plugin.
 
 The following examples demonstrate how to deploy AIE artifacts to the default local maven repository (obviously adjust the paths to match your environment).
 
@@ -60,7 +60,8 @@ Mavenizing your project
 ====================================
 Please refer to the [sample-maven-351](https://github.com/attivio/aie-maven/tree/master/sample-maven-351)
 or [sample-maven-430](https://github.com/attivio/aie-maven/tree/master/sample-maven-430)
-projects for sample mavenized AIE projects.  
+projects for sample mavenized AIE projects.  The sample POMs are applicable to AIE 3.5.0/3.5.1 and AIE 4.2.0/4.3.0/4.3.1
+(just set the version of AIE dependencies accordingly).
 
 Adding Dependencies - 4.x and above
 --------------------------------------
@@ -162,8 +163,8 @@ For integration testing, we typically start AIE within JUnit tests; therefore, w
 Adding Dependencies - 3.5.x
 --------------------------------------
 In AIE 3.5, we did not have a clearly-defined SDK.  Nevertheless, you should limit the compile scope to the APIs you need:
-add the API, Transformer, and Connector artifacts to the compile scope (based on your needs, see POM below).
-Add runtime artifacts required testing to the test scope.
+add the API, Transformer, and Connector artifacts to the compile scope 
+(based on your needs, see POM below).  Add runtime artifacts required testing to the test scope.
 
 ```xml
 <properties>
@@ -334,19 +335,19 @@ We can then either set the ``ATTIVIO_HOME`` environment variable before calling 
 
 Watch out for conflicts
 -----------------------
-AIE includes many standard open source artifacts, including jakarta commons, spring, guava, etc.
-Make sure that you don't add conflicting dependencies, or inadvertently [include them via transitive dependencies](http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html).  
+AIE includes many standard open source artifacts, including jakarta commons, spring, guava, etc. Make sure 
+that you don't add conflicting dependencies, or inadvertently [include them via transitive dependencies](http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html).  
 
-AIE includes patched versions of some standard, widely used libraries, including SL4J, Log4J, and httpclient.
-These patched libraries use different group/artifact IDs than the originals, so maven cannot automatically resolve conflicting versions.
+AIE includes patched versions of some standard, widely used libraries, including SL4J, Log4J, and httpclient. These patched 
+libraries use different group/artifact IDs than the originals, so maven cannot automatically resolve conflicting versions.
 
 To prevent maven from using conflicting versions of transitive dependencies, 
 [configure maven to exclude them](http://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
 
 License
 ========
-This is distributed under the Apache 2.0 License, on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.  
-Please don't blame us if your corn flakes get soggy.
+This is distributed under the Apache 2.0 License, on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF 
+ANY KIND.  Please don't blame us if your corn flakes get soggy.
 
-The maven repository created by these scripts includes the most widely-used AIE artifacts. 
-Nevertheless, if something is missing, please drop us a line and we'll do our best to fix things up.
+The maven repository created by these scripts includes the most widely-used AIE artifacts. Nevertheless, 
+if something is missing, please [add an issue](https://github.com/attivio/aie-maven/issues) and we'll do our best to fix things up.
