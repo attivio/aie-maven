@@ -36,6 +36,18 @@
 			<version>${aieVersion}</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.attivio.platform.platform.esb</groupId>
+			<artifactId>api</artifactId>
+			<version>${aieVersion}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.attivio.platform.platform.esb</groupId>
+			<artifactId>model</artifactId>
+			<version>${aieVersion}</version>
+			<scope>compile</scope>
+		</dependency>
 		<!-- AIE Dependecies -->
 		<dependency>
 			<groupId>xml-apis</groupId>
