@@ -100,6 +100,18 @@ For integration testing, we typically start AIE within JUnit tests; therefore, w
 		<version>${aieVersion}</version>
 		<scope>compile</scope>
 	</dependency>
+	<dependency>
+		<groupId>com.attivio.platform.platform.esb</groupId>
+		<artifactId>api</artifactId>
+		<version>${aieVersion}</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>com.attivio.platform.platform.esb</groupId>
+		<artifactId>model</artifactId>
+		<version>${aieVersion}</version>
+		<scope>compile</scope>
+	</dependency>
 	<!-- add the server sdk only if you're developing server-side AIE components like transformers -->
 	<dependency>
 		<groupId>com.attivio.platform.sdk</groupId>
